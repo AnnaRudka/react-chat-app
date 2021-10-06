@@ -87,7 +87,7 @@ export const ChatSection = styled.section`
 export const RegistrationContainer = styled.div`
   width: 430px;
   margin: 20px auto;
-  background-color: #121212;
+  background-color: #dbdbdb;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   padding: 50px;
@@ -110,13 +110,18 @@ export const NameForm = styled.div`
 `;
 
 export const Input = styled.input`
+  -webkit-appearance: none;
+  outline: none;
   padding: 10px 5px;
   margin: 10px 0;
   width: 100%;
   border: 1px solid #dbdbdb;
   border-radius: 20px;
-  color: #dbdbdb;
+  color: #777777;
   background: #ffffff;
+  &:focus {
+    border: 1px solid #45d4f8;
+  }
 `;
 
 export const CheckboxContainer = styled.div`

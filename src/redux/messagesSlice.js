@@ -7,18 +7,21 @@ let initialState = [
     idFrom: 0,
     text: "Hi, Alice)",
     date: "01.10.2021",
+    time: "4:10 AM",
   },
   {
     id: uuidv4(),
     idFrom: 1,
     text: "Hello! So how’s your learning going, Anna?",
     date: "01.10.2021",
+    time: "4:11 AM",
   },
   {
     id: uuidv4(),
     idFrom: 1,
     text: "Couldn’t be better!Thanks for asking, Alice)",
     date: "01.10.2021",
+    time: "4:15 AM",
   },
 ];
 

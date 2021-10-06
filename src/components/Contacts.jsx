@@ -33,7 +33,6 @@ function Contacts() {
                 <Input
             onChange={handleSearchChange}
             placeholder="&#x1F50E; Search or start new chat"
-            className="search-input"
             type="text"
             id="search"
             value={search}

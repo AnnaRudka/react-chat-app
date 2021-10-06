@@ -8,7 +8,7 @@ const Contact = (contact) => {
 
   return (
     <div>
-      {/* <NavLink to={`/${contact.firstName}` } activeClassName="link-active"> */}
+      <NavLink to={`/${contact.id}` } activeClassName="link-active">
               <div className="contact-item" onClick={handleClick} >
                   <div className="contact_info">
                       <UserPhoto>
@@ -26,9 +26,8 @@ const Contact = (contact) => {
                       {contact.lastDate}
                   </div>
               </div>
-          {/* </NavLink>
-          <Route path={`/${contact.firstName}`}></Route> */}
-      </div>
+          </NavLink>
+               </div>
   );
 };
 export default Contact;
