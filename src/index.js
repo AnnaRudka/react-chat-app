@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./store.js";
+
+// import { hydrateCharges } from "./redux/chargesSlice";
+// import { hydrateIncomes } from "./redux/incomesSlice";
+
+// const getItemFromLocalStorage = (item) => {
+//   try {
+//     const persistedState = localStorage.getItem("reduxState")[item];
+//     if (persistedState) return JSON.parse(persistedState);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
+// const contacts = getItemFromLocalStorage("contacts");
+// const chatlist = getItemFromLocalStorage("chatlist");
+
+// if (contacts) {
+//   store.dispatch(hydrateCharges(charges));
+// }
+
+// if (incomes) {
+//   store.dispatch(hydrateIncomes(incomes));
+// }
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

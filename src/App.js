@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { createGlobalStyle } from "styled-components";
+import "./App.css";
+import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
+import HomePage from "./components/HomePage.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+
+const Global = createGlobalStyle`
+  *, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    font-family: sans-serif;
+  }
+  a{
+    text-decoration:none;
+  }
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Global />
+      <Router>
+        <Route exact path="/">
+          <Redirect to="/home/" />
+        </Route>
+        <Route exact path="/home" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+      </Router>
     </div>
   );
 }
