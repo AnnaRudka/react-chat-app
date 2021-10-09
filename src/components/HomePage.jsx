@@ -2,13 +2,7 @@ import React from 'react';
 import Contacts from "./Contacts.jsx";
 import Chats from "./Chats.jsx";
 import { Wrapper } from './styles';
-import {
-    Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 const HomePage = () => {
   return(
@@ -16,7 +10,7 @@ const HomePage = () => {
           <Contacts />
           <Switch>
               <Route path="/:contactId">
-              <Chats />
+                <Chats />
               </Route>
           </Switch>
     </Wrapper>

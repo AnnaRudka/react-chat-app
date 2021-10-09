@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import "./App.css";
-import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import HomePage from "./components/HomePage.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 
@@ -23,10 +23,9 @@ function App() {
     <div className="App">
       <Global />
       <Router>
-        <Route exact path="/">
-          <Redirect to="/home/" />
+        <Route path="/">
+          <HomePage />
         </Route>
-        <Route exact path="/home" component={HomePage} />
         <Route path="/login" component={LoginPage} />
       </Router>
     </div>

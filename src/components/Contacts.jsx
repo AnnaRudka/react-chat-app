@@ -8,7 +8,6 @@ import { ContactSection, Input} from './styles';
 
 function Contacts() {
     const contacts = useSelector(selectContacts);
-    console.log(contacts);
     const [items, setItems] = useState(contacts);
     const [search, setSearch] = useState("");
     

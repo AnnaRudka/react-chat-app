@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import icon from "../assets/sendIcon.png";
+import iconActive from "../assets/sendIcon-active.png";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -45,12 +47,14 @@ export const ContactSection = styled.section`
   }
   .contact_message {
     color: #cacaca;
+    max-height: 30px;
+    overflow: hidden;
   }
   .contact_date {
     padding: 5px 0;
   }
   .link-active {
-    color: #45d4f8;
+    color: red;
   }
 `;
 
@@ -59,12 +63,13 @@ export const UserContainer = styled.div`
 `;
 
 export const UserPhoto = styled.div`
+  flex-shrink: 0;
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  overflow: hidden;
   img {
     width: 100%;
-    border-radius: 50%;
   }
 `;
 
@@ -82,6 +87,34 @@ export const ChatSection = styled.section`
     padding: 10px 20px;
     font-weight: 300;
   }
+  .chats-content {
+    possition: relative;
+    padding: 15px 0;
+    min-height: calc(100% - 160px);
+  }
+  .new-message {
+    padding: 0 15px;
+    position: relative;
+    max-width: 100%;
+  }
+  .sent-button {
+    position: absolute;
+    padding: 0 15px;
+    top: 14px;
+    right: 40px;
+    height: 30px;
+    z-index: 9999999;
+    cursor: pointer;
+    background: transparent;
+    background-image: url(${icon});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: none;
+  }
+  .sent-button:active {
+    background-image: url(${iconActive});
+  }
 `;
 
 export const RegistrationContainer = styled.div`
@@ -89,7 +122,6 @@ export const RegistrationContainer = styled.div`
   margin: 20px auto;
   background-color: #dbdbdb;
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
   padding: 50px;
 `;
 
@@ -112,7 +144,7 @@ export const NameForm = styled.div`
 export const Input = styled.input`
   -webkit-appearance: none;
   outline: none;
-  padding: 10px 5px;
+  padding: 10px 15px;
   margin: 10px 0;
   width: 100%;
   border: 1px solid #dbdbdb;
@@ -121,6 +153,40 @@ export const Input = styled.input`
   background: #ffffff;
   &:focus {
     border: 1px solid #45d4f8;
+  }
+`;
+
+export const Message = styled.div`
+  padding: 0 15px;
+  font-size: 14px;
+  .contact-message {
+    text-align: left;
+    display: flex;
+  }
+  .message_content {
+    padding: 0 10px;
+  }
+  .message_text {
+    padding: 10px 20px;
+    border-radius: 20px;
+  }
+  .user-text {
+    display: inline-block;
+    color: #000000;
+    background-color: #f3f2f2;
+  }
+  .contact-text {
+    color: #ffffff;
+    background: #657683;
+  }
+  .message_date {
+    color: #777777;
+    font-size: 12px;
+    padding: 5px;
+  }
+  .user-message {
+    text-align: right;
+    padding: 0 10px;
   }
 `;
 

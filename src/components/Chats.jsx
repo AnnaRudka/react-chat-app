@@ -1,37 +1,82 @@
-import React, { useState, useEffect} from "react";
+import React, { useState} from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { selectContacts } from '../redux/contactsSlice';
-import { selectMessages } from '../redux/messagesSlice';
-import { ChatSection, UserPhoto, Input} from './styles';
+import { selectMessages, addMessages } from '../redux/messagesSlice';
+import { ChatSection, UserPhoto, Input } from './styles';
+import ContactMessage from "./ContactMessage";
+import UserMessage from "./UserMessage";
+import { v4 as uuidv4 } from "uuid";
+//import axios from 'axios';
 
 function Chats() {
-    const contacts = useSelector(selectContacts);
-    const contact = contacts[0];
-    const messages = useSelector(selectMessages);
+    const { contactId } = useParams();
+    const dispatch = useDispatch();
+    const contact = useSelector(selectContacts).find((el) => el.id === Number(contactId));
+    const conversation = useSelector(selectMessages).find((el) => el.id === Number(contactId));
+    const messages = conversation ? conversation.conversation : [];
 
     const [newMessage, setNewMessage] = useState("");
-    const handleNewMessageAdded = (e) => {
-    setNewMessage(e.target.value);
+
+    const handleNewMessage = (e) => {
+        setNewMessage(e.target.value);
     };
+
+    const handleClick = e => {
+        e.preventDefault();
+        const date = new Date();
+        dispatch(addMessages({
+            id: contactId,
+            messageId: uuidv4(),
+            contactid: 0,
+            text: newMessage,
+            date: date.toLocaleDateString(),
+            time: date.toLocaleTimeString(),
+        }));
+        //getAnswer();
+    };
+
+    // const getAnswer = () => {
+    //     const apiUrl = 'https://api.chucknorris.io/jokes/random';
+    //     axios.get(apiUrl).then((resp) => {
+    //         const newJoke = resp.data.value;
+    //         const date = new Date();
+    //         dispatch(addMessages({
+    //             id: contactId,
+    //             messageId: uuidv4(),
+    //             contactid: contactId,
+    //             text: newJoke,
+    //             date: date.toLocaleDateString(),
+    //             time: date.toLocaleTimeString(),
+    //         }));
+    //     }).catch(error => {     console.log(error);  });
+    // };
+   
+
     return (
         <ChatSection>
             <div className="chats-header">
                 <UserPhoto>
-                    <img src={contact.photo} alt="photo" />
+                    <img src={contact.photo} alt="userPhoto" />
                 </UserPhoto>
                 <h3>{contact.firstName} {contact.lastName}</h3>
             </div>
             <div className="chats-content">
-
+                {messages.map((message) => (
+                    message.contactid === 0 ? <UserMessage  {...message} key={message.messageId} /> 
+                    : <ContactMessage  {...message} key={message.messageId} contact={contact} />
+                ))}
             </div>
-            <div>
+            <div className="new-message">
                 <Input
-            onChange={handleNewMessageAdded}
-            placeholder="Type your message ➤"
+            onChange={handleNewMessage}
+            placeholder="Type your message"
             type="text"
             id="newMessage"
             value={newMessage}
                 ></Input>
+                <button onClick={handleClick} className="sent-button"></button>
             </div>
         </ChatSection>
     );

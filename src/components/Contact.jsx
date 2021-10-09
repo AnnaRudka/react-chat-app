@@ -1,33 +1,33 @@
-import { NavLink, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { UserPhoto } from './styles';
+import { selectMessages } from '../redux/messagesSlice';
+import { useSelector } from 'react-redux';
 
 const Contact = (contact) => {
-    const handleClick = e => {
-        e.preventDefault();
-    };
+    const convers = useSelector(selectMessages).find((el) => el.id === Number(contact.id));
+    const messages = convers ? convers.conversation : null;
+    const lastmessage = messages ? messages[messages.length-1] : "";
 
   return (
-    <div>
-      <NavLink to={`/${contact.id}` } activeClassName="link-active">
-              <div className="contact-item" onClick={handleClick} >
+    <NavLink to={`/${contact.id}`}>
+              <div className="contact-item" >
                   <div className="contact_info">
                       <UserPhoto>
-                          <img src={contact.photo} alt="photo" />
+                          <img src={contact.photo} alt="userPhoto" />
                       </UserPhoto>
                       <div className="contact_name">
                           <span>{contact.firstName}</span>
                           <span>{contact.lastName}</span>
                           <div className="contact_message">
-                              <span>Last message</span>
+                              <span>{lastmessage.text}</span>
                           </div>
                       </div>
                   </div>
                   <div className="contact_date">
-                      {contact.lastDate}
-                  </div>
+                  {lastmessage.date}
               </div>
-          </NavLink>
-               </div>
+          </div>
+      </NavLink>
   );
 };
 export default Contact;
