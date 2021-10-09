@@ -4,9 +4,8 @@ import { selectMessages } from '../redux/messagesSlice';
 import { useSelector } from 'react-redux';
 
 const Contact = (contact) => {
-    const convers = useSelector(selectMessages).find((el) => el.id === Number(contact.id));
-    const messages = convers ? convers.conversation : null;
-    const lastmessage = messages ? messages[messages.length-1] : "";
+    const messages = useSelector(selectMessages).find((el) => el.id === Number(contact.id)).conversation;
+    const lastmessage = (messages.length === 0) ? "" : messages[messages.length-1];
 
   return (
     <NavLink to={`/${contact.id}`}>

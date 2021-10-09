@@ -23,6 +23,7 @@ export const ContactSection = styled.section`
   .contacts-list {
     background-color: #ffffff;
     padding: 15px;
+    overflow-y: auto;
   }
   h3 {
     color: #45d4f8;
@@ -76,6 +77,8 @@ export const UserPhoto = styled.div`
 export const ChatSection = styled.section`
   width: 65%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   .chats-header {
     display: flex;
     justify-content: flex-start;
@@ -90,12 +93,14 @@ export const ChatSection = styled.section`
   .chats-content {
     possition: relative;
     padding: 15px 0;
-    min-height: calc(100% - 160px);
+    flex: 1 1 auto;
+    overflow-y: auto;
   }
   .new-message {
     padding: 0 15px;
     position: relative;
     max-width: 100%;
+    flex-shrink: 0;
   }
   .sent-button {
     position: absolute;

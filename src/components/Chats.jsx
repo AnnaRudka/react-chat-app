@@ -8,14 +8,13 @@ import { ChatSection, UserPhoto, Input } from './styles';
 import ContactMessage from "./ContactMessage";
 import UserMessage from "./UserMessage";
 import { v4 as uuidv4 } from "uuid";
-//import axios from 'axios';
+import axios from 'axios';
 
 function Chats() {
     const { contactId } = useParams();
     const dispatch = useDispatch();
     const contact = useSelector(selectContacts).find((el) => el.id === Number(contactId));
-    const conversation = useSelector(selectMessages).find((el) => el.id === Number(contactId));
-    const messages = conversation ? conversation.conversation : [];
+    const messages = useSelector(selectMessages).find((el) => el.id === Number(contactId)).conversation;
 
     const [newMessage, setNewMessage] = useState("");
 
@@ -34,25 +33,24 @@ function Chats() {
             date: date.toLocaleDateString(),
             time: date.toLocaleTimeString(),
         }));
-        //getAnswer();
+        getAnswer();
     };
 
-    // const getAnswer = () => {
-    //     const apiUrl = 'https://api.chucknorris.io/jokes/random';
-    //     axios.get(apiUrl).then((resp) => {
-    //         const newJoke = resp.data.value;
-    //         const date = new Date();
-    //         dispatch(addMessages({
-    //             id: contactId,
-    //             messageId: uuidv4(),
-    //             contactid: contactId,
-    //             text: newJoke,
-    //             date: date.toLocaleDateString(),
-    //             time: date.toLocaleTimeString(),
-    //         }));
-    //     }).catch(error => {     console.log(error);  });
-    // };
-   
+    const getAnswer = () => {
+        const apiUrl = 'https://api.chucknorris.io/jokes/random';
+        axios.get(apiUrl).then((resp) => {
+            const newJoke = resp.data.value;
+            const date = new Date();
+            setTimeout(() => dispatch(addMessages({
+                id: contactId,
+                messageId: uuidv4(),
+                contactid: contactId,
+                text: newJoke,
+                date: date.toLocaleDateString(),
+                time: date.toLocaleTimeString(),
+            })), 10000);  
+        }).catch(error => {console.log(error);});
+    };
 
     return (
         <ChatSection>

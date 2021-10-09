@@ -54,6 +54,22 @@ let initialState = [
       },
     ],
   },
+  {
+    id: 3,
+    conversation: [],
+  },
+  {
+    id: 4,
+    conversation: [],
+  },
+  {
+    id: 5,
+    conversation: [],
+  },
+  {
+    id: 6,
+    conversation: [],
+  },
 ];
 
 const reduxState = JSON.parse(localStorage.getItem("reduxState"));
@@ -65,7 +81,6 @@ export const slice = createSlice({
   initialState: initialState,
   reducers: {
     addMessages: (state, action) => {
-      console.log("action", action.payload);
       state.map((item) => {
         return item.id === Number(action.payload.id)
           ? item.conversation.push(action.payload)
