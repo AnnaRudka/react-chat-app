@@ -16,6 +16,9 @@ const Global = createGlobalStyle`
   a{
     text-decoration:none;
   }
+  .selected {
+    border-bottom: 1px solid #dbdbdb;
+  }
 `;
 
 function App() {

@@ -5,9 +5,6 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store.js";
 
-// import { hydrateCharges } from "./redux/chargesSlice";
-// import { hydrateIncomes } from "./redux/incomesSlice";
-
 // const getItemFromLocalStorage = (item) => {
 //   try {
 //     const persistedState = localStorage.getItem("reduxState")[item];
@@ -18,15 +15,7 @@ import store from "./store.js";
 // };
 
 // const contacts = getItemFromLocalStorage("contacts");
-// const chatlist = getItemFromLocalStorage("chatlist");
-
-// if (contacts) {
-//   store.dispatch(hydrateCharges(charges));
-// }
-
-// if (incomes) {
-//   store.dispatch(hydrateIncomes(incomes));
-// }
+// const messages = getItemFromLocalStorage("messages");
 
 ReactDOM.render(
   <Provider store={store}>

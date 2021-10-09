@@ -14,7 +14,7 @@ function Chats() {
     const { contactId } = useParams();
     const dispatch = useDispatch();
     const contact = useSelector(selectContacts).find((el) => el.id === Number(contactId));
-    const messages = useSelector(selectMessages).find((el) => el.id === Number(contactId)).conversation;
+    const messages = useSelector(selectMessages).find((el) =>  Number(el.id) === Number(contactId)).conversation;
 
     const [newMessage, setNewMessage] = useState("");
 

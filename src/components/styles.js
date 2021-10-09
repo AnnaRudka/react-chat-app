@@ -54,9 +54,6 @@ export const ContactSection = styled.section`
   .contact_date {
     padding: 5px 0;
   }
-  .link-active {
-    color: red;
-  }
 `;
 
 export const UserContainer = styled.div`
