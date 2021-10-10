@@ -16,8 +16,8 @@ const Global = createGlobalStyle`
   a{
     text-decoration:none;
   }
-  .selected {
-    border-bottom: 1px solid #dbdbdb;
+  .selected .contact_name{
+    color: #45d4f8;
   }
 `;
 

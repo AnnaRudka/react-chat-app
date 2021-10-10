@@ -57,6 +57,7 @@ function Chats() {
             <div className="chats-header">
                 <UserPhoto>
                     <img src={contact.photo} alt="userPhoto" />
+                    <div className="active-icon"><span>&#10004;</span></div>
                 </UserPhoto>
                 <h3>{contact.firstName} {contact.lastName}</h3>
             </div>

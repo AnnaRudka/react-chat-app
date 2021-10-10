@@ -48,7 +48,7 @@ export const ContactSection = styled.section`
   }
   .contact_message {
     color: #cacaca;
-    max-height: 30px;
+    height: 30px;
     overflow: hidden;
   }
   .contact_date {
@@ -64,10 +64,28 @@ export const UserPhoto = styled.div`
   flex-shrink: 0;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
-  overflow: hidden;
+  position: relative;
   img {
     width: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .active-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: #0ed145;
+    z-index: 9999999;
+    border: 1px solid #0ed145;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  span {
+    padding-left: 3px;
+    //border: 1px red solid;
+    font-size: 12px;
   }
 `;
 
@@ -88,7 +106,7 @@ export const ChatSection = styled.section`
     font-weight: 300;
   }
   .chats-content {
-    possition: relative;
+    position: relative;
     padding: 15px 0;
     flex: 1 1 auto;
     overflow-y: auto;

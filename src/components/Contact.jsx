@@ -12,7 +12,8 @@ const Contact = ({id, photo, firstName, lastName}) => {
               <div className="contact-item" >
                   <div className="contact_info">
                       <UserPhoto>
-                          <img src={photo} alt="userPhoto" />
+                        <img src={photo} alt="userPhoto" />
+                        <div className="active-icon"><span>&#10004;</span></div>
                       </UserPhoto>
                       <div className="contact_name">
                           <span>{firstName}</span>
