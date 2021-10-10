@@ -3,9 +3,9 @@ import { UserPhoto } from './styles';
 import { selectMessages } from '../redux/messagesSlice';
 import { useSelector } from 'react-redux';
 
-const Contact = ({id, photo, firstName, lastName}) => {
+const Contact = ({ id, photo, firstName, lastName }) => {
     const messages = useSelector(selectMessages).find((el) => el.id === Number(id)).conversation;
-    const lastmessage = (messages.length === 0) ? "" : messages[messages.length-1];
+    const lastmessage = messages[messages.length - 1] || '';
 
   return (
     <NavLink to={`/${id}`} activeClassName="selected">

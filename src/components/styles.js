@@ -1,18 +1,26 @@
-import styled from "styled-components";
-import icon from "../assets/sendIcon.png";
-import iconActive from "../assets/sendIcon-active.png";
+import styled from 'styled-components';
+import icon from '../assets/sendIcon.png';
+import iconActive from '../assets/sendIcon-active.png';
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+`;
+
+export const EmptyChat = styled.section`
+  width: 65%;
+  align-content: flex-start;
+  padding: 16px;
 `;
 
 export const ContactSection = styled.section`
   width: 35%;
   justify-content: flex-end;
   height: 100vh;
-  overflowy: "scroll";
+  overflowy: 'scroll';
   border: 1px solid #dbdbdb;
   background-color: #ffffff;
   .contacts-header {
@@ -22,23 +30,28 @@ export const ContactSection = styled.section`
   }
   .contacts-list {
     background-color: #ffffff;
-    padding: 15px;
     overflow-y: auto;
   }
   h3 {
     color: #45d4f8;
-    padding: 20px 5px;
+    padding: 20px 12px;
     font-weight: 300;
+  }
+  span {
+    padding: 0 2px;
   }
   .contact-item {
     font-size: 14px;
-    padding: 12px 0;
+    padding: 8px;
     color: #777777;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     text-align: left;
     border-bottom: 1px solid #dbdbdb;
+  }
+  .selected .contact-item {
+    background-color: rgba(227, 227, 227, 0.26);
   }
   .contact_info {
     display: flex;
@@ -137,30 +150,6 @@ export const ChatSection = styled.section`
   }
 `;
 
-export const RegistrationContainer = styled.div`
-  width: 430px;
-  margin: 20px auto;
-  background-color: #dbdbdb;
-  color: #ffffff;
-  padding: 50px;
-`;
-
-export const RegistrationForm = styled.div`
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  h3 {
-    margin: 10px;
-    text-align: center;
-    font-weight: 300;
-  }
-`;
-
-export const NameForm = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
 export const Input = styled.input`
   -webkit-appearance: none;
   outline: none;
@@ -208,18 +197,4 @@ export const Message = styled.div`
     text-align: right;
     padding: 0 10px;
   }
-`;
-
-export const CheckboxContainer = styled.div`
-  margin: 0 0 15px;
-  font-size: 11px;
-  color: #aaaaaa;
-  line-height: 1.8em;
-  cursor: pointer;
-  text-align: left;
-`;
-
-export const Checkbox = styled.input`
-  border: 1px solid red;
-  margin-right: 10px;
 `;

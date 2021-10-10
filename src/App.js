@@ -1,8 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import "./App.css";
-import { Route, BrowserRouter as Router } from "react-router-dom";
-import HomePage from "./components/HomePage.jsx";
-import LoginPage from "./components/LoginPage.jsx";
+import { createGlobalStyle } from 'styled-components';
+import './App.css';
+import { Route, HashRouter as Router } from 'react-router-dom';
+import Conversations from './components/Conversations';
 
 const Global = createGlobalStyle`
   *, *::before, *::after{
@@ -16,9 +15,6 @@ const Global = createGlobalStyle`
   a{
     text-decoration:none;
   }
-  .selected .contact_name{
-    color: #45d4f8;
-  }
 `;
 
 function App() {
@@ -27,9 +23,8 @@ function App() {
       <Global />
       <Router>
         <Route path="/">
-          <HomePage />
+          <Conversations />
         </Route>
-        <Route path="/login" component={LoginPage} />
       </Router>
     </div>
   );
